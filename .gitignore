@@ -1,0 +1,9 @@
+# 生成方案文件用的本地脚本，不需要发布
+profiles/antimicrox/generate.py
+
+# AutoHotkey 试验脚本（未采用）
+*.ahk
+
+# JoyToKey 旧方案（README 已改为 AntiMicroX 版本）
+profiles/CLI.cfg
+profiles/Gui.cfg
