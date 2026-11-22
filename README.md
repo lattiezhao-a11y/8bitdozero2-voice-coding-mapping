@@ -16,7 +16,8 @@ Two profiles are provided:
 | Item | Details |
 |---|---|
 | Gamepad | 8BitDo Zero 2 in **X-input mode** |
-| Software | AntiMicroX 3.x (Windows) |
+| System | Windows or Linux (X11 / Wayland); the same profile files work on both |
+| Software | AntiMicroX 3.x |
 | Voice input | Typeless (`Right Alt`: tap once to start, tap again to stop) |
 
 The default voice input app is **Typeless**, and the L button sends `Right Alt`. If you use a different voice input app, you can either:
@@ -24,9 +25,11 @@ The default voice input app is **Typeless**, and the L button sends `Right Alt`.
 - change that app's voice hotkey to `Right Alt`, or
 - change the key assigned to the L button in AntiMicroX and save it as your own profile.
 
+Typeless has no official Linux version. On Linux, use another voice input app and set its hotkey to `Right Alt`.
+
 ## Grip: vertical by default
 
-The default files are made for the **vertical grip**: the Zero 2 is held upright in the palm, and "up / down / left / right" on the D-pad are meant as seen in that orientation. The diagrams and tables below use the same orientation. (On the device itself the directions are rotated by 90°: the pad's left = vertical up, right = down, down = left, up = right.)
+The default files are made for the **vertical grip**: the Zero 2 is held upright in the palm (it feels great, trust me), and "up / down / left / right" on the D-pad are meant as seen in that orientation. The diagrams and tables below use the same orientation. (On the device itself the directions are rotated by 90°: the pad's left = vertical up, right = down, down = left, up = right.)
 
 If you hold the pad **horizontally**, use the `-horizontal` files instead; the D-pad then behaves normally.
 
@@ -61,7 +64,7 @@ File: [profiles/antimicrox/Zero2-GUI.gamecontroller.amgp](profiles/antimicrox/Ze
 | Select | Mouse wheel up (repeats) |
 | Start | Mouse wheel down (repeats) |
 | Y | Left mouse click |
-| A | `Win + Tab`: Task View |
+| A | `Win + Tab`: Task View on Windows (on Linux it sends `Super + Tab`; what that does depends on your desktop) |
 
 ## CLI profile
 
@@ -84,7 +87,9 @@ All four arrow keys repeat while held (80 ms interval).
 
 ## How to use
 
-1. Install [AntiMicroX](https://github.com/AntiMicroX/antimicrox/releases/latest) (on Windows download `Windows-AMD64.exe`).
+1. Install AntiMicroX:
+   - **Windows**: download `antimicrox-X.X.X-AMD64.exe` from the [releases page](https://github.com/AntiMicroX/antimicrox/releases/latest).
+   - **Linux**: Flatpak (`flatpak install flathub io.github.antimicrox.antimicrox`), the `.deb` or AppImage from the [releases page](https://github.com/AntiMicroX/antimicrox/releases/latest), or your distro's package (e.g. `dnf install antimicrox`). See the [AntiMicroX README](https://github.com/AntiMicroX/antimicrox#installation) for details.
 2. Switch the gamepad to X-input mode, connect it, and check that AntiMicroX shows it in the main window.
 3. Click **Load** and pick the GUI or CLI `.amgp` file.
 4. To switch between GUI and CLI, load the other file.
@@ -95,6 +100,10 @@ All four arrow keys repeat while held (80 ms interval).
 - **AntiMicroX cannot tell a terminal from a graphical app.** The VS Code editor vs. its integrated terminal, and the Claude Code / Codex clients vs. their CLI, look the same to it, so profiles cannot switch automatically per window; load the matching file by hand.
 - Button numbers follow the SDL gamepad layout. If a button does not match its label, adjust it in AntiMicroX and save a new profile.
 - The horizontal-grip files were generated from the same script and have not been tested on a device.
+- **Linux has not been tested on a device.** The key codes are AntiMicroX's cross-platform codes, so the same files should work. Notes:
+  - On many keyboard layouts `Right Alt` acts as `AltGr`. Make sure your voice input app accepts it as a hotkey.
+  - If you use the Flatpak build on Wayland and get a uinput error, follow AntiMicroX's [fix](https://github.com/AntiMicroX/antimicrox/wiki/Open-uinput-error).
+  - If the D-pad does nothing, the pad may report it as a DPad rather than the left stick on your system. Rebind it in AntiMicroX.
 - AntiMicroX itself is only lightly maintained at the moment; see its [README](https://github.com/AntiMicroX/antimicrox).
 
 ## License
